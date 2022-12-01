@@ -107,9 +107,10 @@ class PluginView: NSObject,FlutterPlatformView,FlutterStreamHandler,IJKMediaUrlO
         if case let url as String = url {
             self.controller = IJKFFMoviePlayerController.init(contentURL: URL.init(string: url), with:IJKFFOptions.byDefault())
             let view = controller.view
+            
             view?.frame = self.playerView.frame
             self.playerView.addSubview(view!)
-            controller.scalingMode = .aspectFit
+            controller.scalingMode = .aspectFill
             controller.httpOpenDelegate = self
             controller.tcpOpenDelegate = self
             controller.liveOpenDelegate = self
